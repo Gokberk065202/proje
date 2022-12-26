@@ -307,6 +307,7 @@ public class Emniyet {
                         BufferedImage foto1 = null;
                         try {
                             String dosya1;
+                            System.out.println("Dosya ismini giriniz");
                             Scanner z1 = new Scanner(System.in);
                             dosya1 = z1.nextLine();
                             foto1 = ImageIO.read(new File("C:\\Users\\Gökberk SAVAŞ\\OneDrive\\Masaüstü\\parmak izleri nesne yönelimli projesi\\Kopyalar\\" + dosya1 + ".png"));
@@ -324,6 +325,8 @@ public class Emniyet {
                             ResultSet resultSet = statement.executeQuery("SELECT * FROM projenyp.insanliste");
 
                             while (resultSet.next()) {
+                                m=true;
+
                                 while (m) {
                                     String dosya2 = resultSet.getString("insanliste_foto1");
 
@@ -337,19 +340,25 @@ public class Emniyet {
                                             if (foto1.getRGB(j, i) != foto2.getRGB(j, i)) {
                                                 m=false;
 
+
                                             }
 
                                         }
                                     }
-                                    System.out.println("Tablo no: " + resultSet.getString("id_insanliste"));
-                                    System.out.println("Adi: " + resultSet.getString("insanliste_ad"));
-                                    System.out.println("Soyadi: " + resultSet.getString("insanliste_soyad"));
-                                    System.out.println("TC: " + resultSet.getString("insanliste_TC"));
-                                    System.out.println("Cinsiyet: " + resultSet.getString("insanliste_cinsiyet"));
-                                    System.out.println("Dogum tarihi: " + resultSet.getString("insanliste_dogumt"));
-                                    System.out.println("Adres: " + resultSet.getString("insanliste_adres"));
-                                    System.out.println("Sabika: " + resultSet.getString("insanliste_sabika"));
-                                    System.out.println("#################");
+
+                                    if(m){
+                                        System.out.println("Tablo no: " + resultSet.getString("id_insanliste"));
+                                        System.out.println("Adi: " + resultSet.getString("insanliste_ad"));
+                                        System.out.println("Soyadi: " + resultSet.getString("insanliste_soyad"));
+                                        System.out.println("TC: " + resultSet.getString("insanliste_TC"));
+                                        System.out.println("Cinsiyet: " + resultSet.getString("insanliste_cinsiyet"));
+                                        System.out.println("Dogum tarihi: " + resultSet.getString("insanliste_dogumt"));
+                                        System.out.println("Adres: " + resultSet.getString("insanliste_adres"));
+                                        System.out.println("Sabika: " + resultSet.getString("insanliste_sabika"));
+                                        System.out.println("#################");
+                                        break;
+
+                                    }
 
 
                                 }
